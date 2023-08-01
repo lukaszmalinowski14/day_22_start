@@ -1,5 +1,7 @@
 from turtle import Turtle, Screen
 from paddle import Paddle
+from ball import Ball
+import time
 # 1. Create the screen
 # 2. Create and move a paddle
 # 3. Create another paddle
@@ -11,11 +13,6 @@ from paddle import Paddle
 
 padle1 = Turtle()  # Paddle(color="white", wid=5, len=1, x_pos=350, y_pos=0)
 
-padle1.shape("square")
-padle1.color("white")
-padle1.shapesize(5, 1, None)
-padle1.penup()
-padle1.goto(350, 0)
 
 scren = Screen()
 scren.screensize(800, 600)
@@ -24,26 +21,24 @@ scren.title("PONG")
 scren.tracer(0)
 
 # Ad2
-
-
-def go_up():
-    new_y = padle1.ycor()+20
-    padle1.goto(padle1.xcor(), new_y)
-
-
-def go_down():
-    new_y = padle1.ycor()-20
-    padle1.goto(padle1.xcor(), new_y)
-
+r_paddle = Paddle(350, 0)
+l_paddle = Paddle(-350, 0)
 
 scren.listen()
-scren.onkey(go_up, "Up")
-scren.onkey(go_down, "Down")
+scren.onkey(r_paddle.go_up, "Up")
+scren.onkey(r_paddle.go_down, "Down")
+scren.onkey(l_paddle.go_up, "w")
+scren.onkey(l_paddle.go_down, "s")
+
+# Ad4
+ball = Ball()
 
 game_is_on = True
 
 while game_is_on:
+    time.sleep(0.1)
     scren.update()
+    ball.move()
 
 # exit when click
 scren.exitonclick()
