@@ -9,8 +9,35 @@ class Ball(Turtle):
         self.shapesize(1, 1, None)
         self.penup()
         self.goto(0, 0)
+        self.kierunek_x = True
+        self.kierunek_y = True
 
-    def move(self):
-        new_x = self.xcor()+10
-        new_y = self.ycor()+10
+    def move(self, x=0):
+        # detect padle x:
+        # cal = 0
+        # if x != 0 and self.xcor() > 0:
+        #     cal = 20
+        # elif x != 0 and self.xcor() < 0:
+        #     cal = -20
+        if self.xcor()+x > 340:
+            print(self.xcor())
+            self.kierunek_x = False
+        if self.ycor() > 280:
+            print(self.ycor())
+            self.kierunek_y = False
+        if self.ycor() < -280:
+            print(self.ycor())
+            self.kierunek_y = True
+        if self.xcor()+x < -340:
+            print(self.xcor())
+            self.kierunek_x = True
+        if self.kierunek_x == True:
+            new_x = self.xcor()+10
+        else:
+            new_x = self.xcor()-10
+        if self.kierunek_y == True:
+            new_y = self.ycor()+10
+        else:
+            new_y = self.ycor()-10
+
         self.goto(new_x, new_y)

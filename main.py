@@ -40,5 +40,13 @@ while game_is_on:
     scren.update()
     ball.move()
 
+    # Detect collision with r_padle
+    if ball.distance(r_paddle) < 50 and ball.xcor() > 330:
+        ball.move(20)
+        print("make contact")
+    if ball.distance(l_paddle) < 50 and ball.xcor() < -330:
+        ball.move(-20)
+        print("make contact")
+
 # exit when click
 scren.exitonclick()
