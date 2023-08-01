@@ -1,3 +1,4 @@
+from turtle import Turtle, Screen
 
 # 1. Create the screen
 # 2. Create and move a paddle
@@ -7,3 +8,15 @@
 # 6. Detect collision with paddle
 # 7. Detect when paddle misses
 # 8. Keep score
+
+
+# Ad1
+
+scren = Screen()
+scren.screensize(800, 600)
+scren.bgcolor("black")
+scren.title("PONG")
+
+
+# exit when click
+scren.exitonclick()
