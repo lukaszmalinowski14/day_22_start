@@ -19,17 +19,22 @@ class Ball(Turtle):
         #     cal = 20
         # elif x != 0 and self.xcor() < 0:
         #     cal = -20
+        # GAME OVER
+        # if self.xcor() > 340 or self.xcor() < -340:
+        #     print("Game Over")
+        #     self.goto(0, 0)
+
         if self.xcor()+x > 340:
-            print(self.xcor())
+            # print(self.xcor())
             self.kierunek_x = False
-        if self.ycor() > 280:
-            print(self.ycor())
-            self.kierunek_y = False
-        if self.ycor() < -280:
-            print(self.ycor())
-            self.kierunek_y = True
+        # if self.ycor() > 280:
+            # print(self.ycor())
+            # self.kierunek_y = False
+        # if self.ycor() < -280:
+            # print(self.ycor())
+            # self.kierunek_y = True
         if self.xcor()+x < -340:
-            print(self.xcor())
+            # print(self.xcor())
             self.kierunek_x = True
         if self.kierunek_x == True:
             new_x = self.xcor()+10
@@ -41,3 +46,13 @@ class Ball(Turtle):
             new_y = self.ycor()-10
 
         self.goto(new_x, new_y)
+
+    def bounce(self, direction):
+        if direction == 'x':
+            self.kierunek_x = not self.kierunek_x
+        elif direction == 'y':
+            self.kierunek_y = not self.kierunek_y
+
+    def game_over(self):
+        self.goto(0, 0)
+        self.bounce('x')

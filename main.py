@@ -48,5 +48,14 @@ while game_is_on:
         ball.move(-20)
         print("make contact")
 
+    if ball.ycor() > 280:
+        ball.bounce('y')
+
+    if ball.ycor() < -280:
+        ball.bounce('y')
+
+    if ball.xcor() > 340 or ball.xcor() < -340:
+        ball.game_over()
+
 # exit when click
 scren.exitonclick()
