@@ -11,6 +11,7 @@ class Ball(Turtle):
         self.goto(0, 0)
         self.kierunek_x = True
         self.kierunek_y = True
+        self.move_sped = 0.1
 
     def move(self, x=0):
         # detect padle x:
